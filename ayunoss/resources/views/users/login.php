@@ -12,8 +12,12 @@
     </p>
     <p>
         <b><button type="submit" class="btn btn-success">Sign up</button></b>
+
     </p>
-    <p> Not a member yet ?
-        <a href="<?php echo $generateUrl('signup') ?>" id="registration">Join us !</a>
+    <p>
+        <a href="<?php echo $generateUrl('forgetPwd') ?>" id="forget">Click here</a> if you forgot your password
+    </p>
+    <p> Not a member yet?
+        <a href="<?php echo $generateUrl('signup') ?>" id="registration">Join us!</a>
     </p>
 </form>

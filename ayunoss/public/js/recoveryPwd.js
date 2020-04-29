@@ -1,15 +1,13 @@
 $(document).ready (function () {
-    $("#signupForm").on("submit", function (event) {
+    $("#form").on("submit", function (event) {
+        let url = location.href;
         event.preventDefault();
         $.ajax ({
-            url: "/register",
+            url: url,
             type: "POST",
             data: ({
-                username: $("#login").val(),
-                phonenumber: $("#phonenumsignup").val(),
-                email: $("#emailsignup").val(),
-                passwordsignup: $("#passwordsignup").val(),
-                password_confirm: $("#passwordsignup_confirm").val(),
+                newpwd: $("#newpwd").val(),
+                newpwd_confirm: $("#newpwd_confirm").val(),
             }),
             dataType: "html",
             success: function (data) {
@@ -17,16 +15,14 @@ $(document).ready (function () {
                 if (data.status === 'error') {
                     $.each(data.errors, function(key, value) {
                         var errorMessage = '<p class="error" style="color: red">' + value + '</p>';
-                        if (key == "invalid_email") {
-                            $(errorMessage).insertAfter(".emailError");
-                        } if (key == "pwd_not_match") {
-                            $(errorMessage).insertAfter(".pwdError");
+                        if (key == "invalid_pwd") {
+                            $(errorMessage).insertAfter(".error");
                         }
                         setTimeout(function() { $('.error')[0].remove();}, 4000);
                     });
                 } else if (data.status === 'success') {
                     window.location.href = "/login";
-                    alert("Please check your email and follow the instructions below to confirm your registration.");
+                    alert("Please try to sign in with new password.");
                 }
             }
         })

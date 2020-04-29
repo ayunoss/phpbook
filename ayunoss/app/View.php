@@ -10,11 +10,11 @@ class View
 
 //  $route - передается из метода runAction и равен $this->params
     public function __construct($route) {
-        $this->route = $route;
+        $this->route  = $route;
         $this->router = new Router();
-        $action = $this->router->prepareAction($route['action']);
-        $this->path = $route['controller'].'/'.$action;
-        //$this->layout = $action;
+        $action       = $this->router->prepareAction($route['action']);
+        $this->path   = $route['controller'].'/'.$action;
+//        $this->layout = $action;
     }
 //  отображаем страницу
     public function render($title, $data = [], $data2 = [], $data3 = []) {

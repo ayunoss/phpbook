@@ -12,7 +12,7 @@ class Images {
     }
 //  поиск картинки по пути
     public static function findImg($path) {
-        $files = scandir($path);
+        $files  = scandir($path);
         $images = [];
         foreach ($files as $image) {
             if (($image == '.') || ($image == '..')) continue;

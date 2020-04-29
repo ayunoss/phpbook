@@ -19,14 +19,14 @@
     </span>
     <p>
         <label for="passwordsignup" class="u">Your password</label>
-        <input type="password" id="passwordsignup" name="passwordsignup" placeholder="mypassword99"
+        <input type="password" id="passwordsignup" name="passwordsignup" placeholder="myPasSW0rd09"
                    required="required" maxlength="50">
     </p>
     <span class="pwdError">
         <p>
             <label for="passwordsignup_confirm" class="u">Please confirm your password</label>
             <input type="password" id="passwordsignup_confirm" name="password_confirm"
-                   placeholder="mypassword99" required="required" maxlength="50"/>
+                   placeholder="myPasSW0rd09" required="required" maxlength="50"/>
         </p>
     </span>
     <p>

@@ -18,7 +18,9 @@
         <td><?php echo $item['login']; ?></td>
         <td><?php echo $item['email']; ?></td>
         <td><?php echo $item['phone']; ?></td>
+
         <?php foreach ($data2 as $val) : ?>
+
         <?php if($item['id'] === $val['user_id']) : ?>
         <td><?php echo $val['role_name'] ?></td>
         <td><?php echo $val['perm_name']?></td>

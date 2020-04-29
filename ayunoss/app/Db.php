@@ -26,7 +26,7 @@ class Db {
     }
 //  достаем данные в виде двумерного ассоц массива из бд и возвращаем в виде обычного ассоциативного
     public function getDataViaPDO($sql) {
-        $request = $this->queryPDO($sql);
+        $request   = $this->queryPDO($sql);
         $assocData = $request->fetchAll(PDO::FETCH_ASSOC);
         if($assocData != null){
             $result = $this->transformArray($assocData);
@@ -34,7 +34,7 @@ class Db {
         }
     }
     public function getAssocDataViaPDO($sql) {
-        $request = $this->queryPDO($sql);
+        $request   = $this->queryPDO($sql);
         $assocData = $request->fetchAll(PDO::FETCH_ASSOC);
         return $assocData;
     }
@@ -69,7 +69,7 @@ class Db {
 //  преобразуем двумерный ассоц массив данных в одномерный ассоц массив
     public function transformArray($arr) {
         $assocArr = $arr[0];
-        $assoc = [];
+        $assoc    = [];
         foreach ($assocArr as $key => $value) {
             $assoc[$key] = $value;
         }

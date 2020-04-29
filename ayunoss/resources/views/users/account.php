@@ -30,4 +30,8 @@
     if(array_key_exists('links', $data)) {
         echo $data['links'];
     } else echo "Please upload your information" ;?></p>
+<?php if(!array_key_exists('links', $data)) : ?>
+<p><a href="http://ayunoss.phpbook/add-user-info/?id=<?php echo $data['id']; ?>">Add personal information</a></p>
+<?php else : ?>
 <p><a href="http://ayunoss.phpbook/upload-user-info/?id=<?php echo $data['id']; ?>">Upload personal information</a></p>
+<?php endif; ?>

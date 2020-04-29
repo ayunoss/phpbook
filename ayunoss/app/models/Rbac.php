@@ -12,7 +12,7 @@ class Rbac
     protected $permission;
 
     public function __construct() {
-        $this->db = new Db();
+        $this->db   = new Db();
         $this->role = new Roles();
     }
 //  получаем все данные о пользователях

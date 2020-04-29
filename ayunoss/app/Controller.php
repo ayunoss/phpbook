@@ -3,6 +3,7 @@ namespace app;
 
 use app\models\Rbac;
 use app\Db;
+use app\View;
 use http\Header;
 
 abstract class Controller {
@@ -16,14 +17,14 @@ abstract class Controller {
 //  $route - передается из метода runAction и равен $this->params
     public function __construct($route) {
         $this->route = $route;
-        $this->rbac = new Rbac();
+        $this->rbac  = new Rbac();
         // проверяем есть ли у пользователя доступ к просмотру страницы
         if ($this->checkAccess() === false) {
-            $this->view::errorCode(403);
+            View::errorCode(403);
         }
 
-        $this->db = new Db();
-        $this->view = new View($route);
+        $this->db    = new Db();
+        $this->view  = new View($route);
         // подключаемся к одноименной модели данного контроллера
         $this->model = $this->loadModel($route['controller']);
     }

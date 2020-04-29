@@ -6,6 +6,9 @@ use app\View;
 
 class ImagesController extends Controller
 {
+    /** @var $model Images */
+    public $model;
+
 //  отображаем галерею изображений
     public function showAction() {
         $images = Images::findImg("storage/images");
@@ -18,9 +21,9 @@ class ImagesController extends Controller
 
 //  загружаем картинку через форму
     public function downloadImgAction() {
-        if(isset($_FILES['image'])){
+        if (isset($_FILES['image'])) {
             $filePath = "storage/images/".$_FILES['image']['name'];
-            $file = $_FILES['image']['tmp_name'];
+            $file     = $_FILES['image']['tmp_name'];
             Images::donwloadImg($filePath, $file);
         }
     }

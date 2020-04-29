@@ -1,4 +1,4 @@
-<form action="<?php echo $generateUrl('roles'); ?>" method="post">
+<form action="<?php echo $generateUrl('setPermissions'); ?>" method="post">
     <p> <b>Please select the role to assign permissions</b>
         <select class="form-control" name="chooseRole">
             <option selected disabled>Choose role</option>

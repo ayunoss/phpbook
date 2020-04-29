@@ -1,8 +1,10 @@
 <?php
 namespace app\models;
 
-class Main
-{
+use app\Model;
+
+class Main extends Model {
+
     public $icons = [];
 
     public function __construct()
@@ -40,5 +42,18 @@ class Main
                 else echo $tab.$this->icons['other'].$file."<br />";
             }
         }
+    }
+//  отправляем  на почту администратора
+    public function sendFeedback($name, $email, $phonenumber, $text) {
+        $to       = "sereneva@yandex.ru";
+        $subject  = "Feedback from, ".$name;
+        $message  = "<h2>Feedback from, ".$name."</h2>";
+        $message .= "<p><b>".$text."</b></p>";
+        $message .= "<p> User phonenumber: ".$phonenumber."</p>";
+        $message .= "<p> User email: ".$email."</p>";
+        $headers  = "Content-type: text/html; charset=utf-8 \r\n";
+        $headers .= "From: <".$email.">\r\n";
+        $this->sendMail($to, $subject, $message, $headers);
+        return;
     }
 }

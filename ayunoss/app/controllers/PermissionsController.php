@@ -2,9 +2,14 @@
 namespace app\controllers;
 
 use app\Controller;
+use app\models\Permissions;
 use app\models\Roles;
 
 class PermissionsController extends Controller {
+
+    /** @var $model Permissions */
+    public $model;
+
 //  отображаем список разрешений
     public function showPermsAction() {
         $perms = $this->model->getPerms();
@@ -18,16 +23,16 @@ class PermissionsController extends Controller {
     }
 //  отображаем страницу назначения разрешений для роли
     public function setPermissionsAction() {
-        $role = new Roles();
+        $role  = new Roles();
         $roles = $role->getAllRoles();
         $perms = $this->model->getPerms();
         $this->view->render('Set permissions to role', $roles, $perms);
     }
 //  устанавливаем разрешения для выбранной роли
     public function asignPermissionsAction() {
-        $role_id = filter_var(trim($_POST['chooseRole']), FILTER_SANITIZE_STRING);
+        $role_id     = filter_var(trim($_POST['chooseRole']), FILTER_SANITIZE_STRING);
         $permissions = $_POST['setPermission'];
-        $exec = $this->model->setPermissions2Role($role_id, $permissions);
+        $this->model->setPermissions2Role($role_id, $permissions);
         $this->view::redirect('root/roles');
     }
 }

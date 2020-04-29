@@ -1,6 +1,6 @@
 <?php
 return [
-//    MainController
+// ----------------------------- MainController -----------------------------
     '' => [
         'name' => 'mainpage',
         'controller' => 'main',
@@ -19,9 +19,12 @@ return [
     'contact-us' => [
         'name' => 'feedback',
         'controller' => 'main',
-        'action' => 'feedback',
+        'action' => [
+            'GET' => 'feedback',
+            'POST' => 'sendFeedback',
+        ],
     ],
-//    UsersController
+// ----------------------------- UsersController -----------------------------
     'register' => [
         'name' => 'signup',
         'controller' => 'users',
@@ -36,6 +39,27 @@ return [
         'action' => [
             'GET' => 'login',
             'POST' => 'auth',
+        ],
+    ],
+    'verification/{id:.+}' => [
+        'name' => 'verifyMail',
+        'controller' => 'users',
+        'action' => 'verifyUserEmail',
+    ],
+    'password-recovery' => [
+        'name' => 'forgetPwd',
+        'controller' => 'users',
+        'action' => [
+            'GET' => 'forgetPassword',
+            'POST' => 'sendRecoveryLink',
+        ],
+    ],
+    'reset-password/{id:.+}' => [
+        'name' => 'resetPwd',
+        'controller' => 'users',
+        'action' => [
+            'GET' => 'recoveryPassword',
+            'POST' => 'resetPassword',
         ],
     ],
     'logout' => [
@@ -69,21 +93,7 @@ return [
         'controller' => 'users',
         'action' => 'deleteUser'
     ],
-//    ImageController
-    'images' => [
-        'name' => 'images',
-        'controller' => 'images',
-        'action' => 'show'
-    ],
-    'download-images' => [
-        'name' => 'imgdownload',
-        'controller' => 'images',
-        'action' => [
-            'GET' => 'downloadForm',
-            'POST' => 'downloadImg',
-        ],
-    ],
-//    RbacController
+// ----------------------------- RbacController -----------------------------
     'root/users' => [
         'name' => 'usersList',
         'controller' => 'rbac',
@@ -97,7 +107,7 @@ return [
             'POST' => 'asignRole',
         ],
     ],
-//    RolesController
+// ----------------------------- RolesController -----------------------------
     'root/roles' => [
         'name' => 'roles',
         'controller' => 'roles',
@@ -111,7 +121,12 @@ return [
             'POST' => 'executeAddingRole'
         ],
     ],
-//    PermissionsController
+    'root/delete-role/{id:.+}' => [
+        'name' => 'deleteRole',
+        'controller' => 'roles',
+        'action' => 'deleteRole',
+    ],
+// ---------------------------- PermissionsController -----------------------------
     'root/permissions' => [
         'name' => 'permissions',
         'controller' => 'permissions',
@@ -125,7 +140,38 @@ return [
         'controller' => 'permissions',
         'action' => [
             'GET' => 'setPermissions',
-            'POST' => 'asignPermissions'
+            'POST' => 'asignPermissions',
         ],
     ],
+// ----------------------------- ImagesController -----------------------------
+    'images' => [
+        'name' => 'images',
+        'controller' => 'images',
+        'action' => 'show'
+    ],
+    'download-images' => [
+        'name' => 'imgdownload',
+        'controller' => 'images',
+        'action' => [
+            'GET' => 'downloadForm',
+            'POST' => 'downloadImg',
+        ],
+    ],
+// ----------------------------- FilesController -------------------------------
+    'files' => [
+        'name' => 'filesList',
+        'controller' => 'files',
+        'action' => 'filesList',
+    ],
+    'download-files' => [
+        'name' => 'fileDownload',
+        'controller' => '',
+        'action' => [
+            'GET' => '',
+            'POST' => '',
+        ],
+    ],
+    'edit-file' => [
+        'name' => 'editFile'
+    ]
 ];
